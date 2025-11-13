@@ -4,17 +4,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 1
-df = pd.DataFrame('medical_examination.csv')
+df = pd.read_csv('medical_examination.csv')
 
 # 2
-weight= df['weight']/(df['height'])^2
-if weight > 25:
-    weightf = 1
-else: 
-    weight = 0
+df['BMI'] = df['weight'] / ((df['height'] / 100) ** 2)
 
-df['overweight'] = weightf
-
+df['overweight'] = (df['BMI'] > 25).astype(int)
 
 # 3
 
@@ -62,6 +57,6 @@ df['overweight'] = weightf
 
 
 
-#     # 16
-    fig.savefig('heatmap.png')
-    return fig
+# #     # 16
+#     fig.savefig('heatmap.png')
+#     return fig
