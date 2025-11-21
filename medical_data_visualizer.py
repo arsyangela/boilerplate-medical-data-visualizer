@@ -11,13 +11,17 @@ df['BMI'] = df['weight'] / ((df['height'] / 100) ** 2)
 
 df['overweight'] = (df['BMI'] > 25).astype(int)
 
-# 3
-if df['cholesterol'] or df['gluc'] == 1:
-    df['overweight'] =0
-if df['cholesterol'] or df['gluc'] > 1:
-    df['cholesterol'] or df['gluc'] = 1
 
-# # 4
+#3
+df.loc[df['cholesterol'] == 1, 'cholesterol'] = 0
+df.loc[df['gluc'] == 1, 'gluc'] = 0
+df.loc[df['cholesterol'] > 1, 'cholesterol'] = 1
+df.loc[df['gluc'] > 1, 'gluc'] = 1
+
+print (df)
+
+# print(df['cholesterol'])
+# # # 4
 # def draw_cat_plot():
 #     # 5
 #     df_cat = None
