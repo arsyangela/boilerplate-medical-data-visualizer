@@ -24,7 +24,7 @@ def draw_cat_plot():
     df_cat = pd.melt(
         df,
         id_vars=['cardio'],
-        value_vars=['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight']
+        value_vars=['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'])
 
 #     # 6
     df_cat = df_cat = df_cat.groupby(['cardio', 'variable', 'value']).size().reset_index(name='total')
@@ -42,6 +42,8 @@ def draw_cat_plot():
     )
 
     return fig    
+
+draw_cat_plot()
 
 #     # 8
 #     fig = None
