@@ -41,28 +41,35 @@ def draw_cat_plot():
         col='cardio'
     )
 
-    return fig    
-
 
 #     # 8
-#     fig = None
+    fig = draw_cat_plot()
+
 
 
 #     # 9
-#     fig.savefig('catplot.png')
-#     return fig
+    fig.savefig('catplot.png')
+    return fig
 
 
-# # 10
-# def draw_heat_map():
-#     # 11
-#     df_heat = None
+# 10
+def draw_heat_map():
+    # 11
+    df_heat = # Clean the df_heat DataFrame
+df_heat = df_heat[
+    (df_heat['ap_lo'] <= df_heat['ap_hi']) &  # diastolic <= systolic
+    (df_heat['height'] >= df_heat['height'].quantile(0.025)) &  # height >= 2.5th percentile
+    (df_heat['height'] <= df_heat['height'].quantile(0.975)) &  # height <= 97.5th percentile
+    (df_heat['weight'] >= df_heat['weight'].quantile(0.025)) &  # weight >= 2.5th percentile
+    (df_heat['weight'] <= df_heat['weight'].quantile(0.975))    # weight <= 97.5th percentile
+]
 
-#     # 12
-#     corr = None
 
-#     # 13
-#     mask = None
+    # 12
+    corr = 
+
+    # 13
+    mask = 
 
 
 
