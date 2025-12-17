@@ -43,7 +43,6 @@ def draw_cat_plot():
 
     return fig    
 
-draw_cat_plot()
 
 #     # 8
 #     fig = None
