@@ -42,44 +42,56 @@ def draw_cat_plot():
     )
 
 
-#     # 8
-    fig = draw_cat_plot()
 
+#     # 8
+    fig_cat = draw_cat_plot()
 
 
 #     # 9
+
     fig.savefig('catplot.png')
     return fig
 
-
 # 10
-def draw_heat_map():
+def draw_heat_map(df_heat):
     # 11
-    df_heat = # Clean the df_heat DataFrame
-df_heat = df_heat[
-    (df_heat['ap_lo'] <= df_heat['ap_hi']) &  # diastolic <= systolic
-    (df_heat['height'] >= df_heat['height'].quantile(0.025)) &  # height >= 2.5th percentile
-    (df_heat['height'] <= df_heat['height'].quantile(0.975)) &  # height <= 97.5th percentile
-    (df_heat['weight'] >= df_heat['weight'].quantile(0.025)) &  # weight >= 2.5th percentile
-    (df_heat['weight'] <= df_heat['weight'].quantile(0.975))    # weight <= 97.5th percentile
-]
+
+    df_heat = df_heat[
+        (df_heat['ap_lo'] <= df_heat['ap_hi']) &  # diastolic <= systolic
+        (df_heat['height'] >= df_heat['height'].quantile(0.025)) &  # height >= 2.5th percentile
+        (df_heat['height'] <= df_heat['height'].quantile(0.975)) &  # height <= 97.5th percentile
+        (df_heat['weight'] >= df_heat['weight'].quantile(0.025)) &  # weight >= 2.5th percentile
+        (df_heat['weight'] <= df_heat['weight'].quantile(0.975))    # weight <= 97.5th percentile
+    ]
 
 
     # 12
-    corr = 
+    corr = df_heat.corr()
 
     # 13
-    mask = 
+    mask = np.triu(np.ones_like(corr, dtype=bool))
 
 
 
-#     # 14
-#     fig, ax = None
+    # 14
+    fig, ax = plt.subplots(figsize=(12, 10))
 
-#     # 15
+    # 15
+    sns.heatmap(
+        corr,            # correlation matrix
+        mask=mask,       # apply the mask
+        annot=True,      # show correlation values
+        fmt=".1f",       # formatting of numbers
+        cmap='coolwarm', # color map
+        center=0,        # center the colormap at 0
+        square=True,     # make cells square
+        linewidths=.5,   # lines between cells
+        cbar_kws={"shrink": .5}  # color bar size
+    )
 
 
+    fig.savefig('heatmap.png')
+    return fig
 
-# #     # 16
-#     fig.savefig('heatmap.png')
-#     return fig
+fig_heat = draw_heat_map(df)
+plt.show()
