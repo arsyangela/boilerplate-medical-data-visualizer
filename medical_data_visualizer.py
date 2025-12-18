@@ -26,11 +26,11 @@ def draw_cat_plot():
         id_vars=['cardio'],
         value_vars=['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'])
 
-#     # 6
+    # 6
     df_cat = df_cat = df_cat.groupby(['cardio', 'variable', 'value']).size().reset_index(name='total')
     
 
-#     # 7
+    # 7
 
     fig = sns.catplot(
         data=df_cat,
@@ -43,11 +43,11 @@ def draw_cat_plot():
 
 
 
-#     # 8
+    # 8
     fig_cat = draw_cat_plot()
 
 
-#     # 9
+    # 9
 
     fig.savefig('catplot.png')
     return fig
@@ -78,15 +78,15 @@ def draw_heat_map(df_heat):
 
     # 15
     sns.heatmap(
-        corr,            # correlation matrix
-        mask=mask,       # apply the mask
-        annot=True,      # show correlation values
-        fmt=".1f",       # formatting of numbers
-        cmap='coolwarm', # color map
-        center=0,        # center the colormap at 0
-        square=True,     # make cells square
-        linewidths=.5,   # lines between cells
-        cbar_kws={"shrink": .5}  # color bar size
+        corr,            
+        mask=mask,       
+        annot=True,      
+        fmt=".1f",       
+        cmap='coolwarm', 
+        center=0,        
+        square=True,     
+        linewidths=.5,   
+        cbar_kws={"shrink": .5}  
     )
 
 
